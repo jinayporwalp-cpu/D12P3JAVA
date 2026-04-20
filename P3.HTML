@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+    box-sizing: border-box;font-family:Arial,  sans-serif;}
+
+    body{
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+    }
+
+    .calc{
+        width: 280px;
+        background: #111;
+        border: 2px solid #222;
+        padding: 14px 12px 12px;
+    }
+
+    .title{
+        color: #fff;
+        font-size: 26px;
+        text-align: center;
+        margin:2px 0px 12px ;
+        font-weight: 700;
+    }
+
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+    }
+
+    #result{
+        grid-column: 1/ span 3;
+        height: 48px;
+        border: none;
+        outline: none;
+        border-radius: 4px;
+        background: #2b2b2b;
+        color: #d7d7d7;
+        padding: 10px 12px;
+        font-size: 16px;
+    }
+
+    .btn{
+        height: 48px;
+        border: none;
+        border-radius: 4px;
+        background: #3a3a3a;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btn:active{transform:scale(.98)}
+    .op{background: #2f2f2f;}
+    .clear{
+        margin-top: 12px;
+        width: 100%;
+        height: 52px;
+        border: none;
+        border-radius: 4px;
+        background: #ff1f1f;
+        color: #fff;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .clear:active{transform:scale(.99)}
+</style>
+<body>
+    <div class="calc">
+        <div class="title">calculator</div>
+        <div class="grid"></div>
+        <!---display--->
+        <input id="result"type="text"placeholder="result"readonly>
+        <button class="btn op" onclick="setscreenvalue('+')">+</button>
+        <!--row 1-->
+        <button class="btn num" onclick="setscreenvalue('1')">1</button>
+        <button class="btn num" onclick="setscreenvalue('2')">2</button>
+        <button class="btn num" onclick="setscreenvalue('3')">3</button>
+        <button class="btn op" onclick="setscreenvalue('-')">-</button>
+
+        <!--row 2-->
+        <button class="btn num" onclick="setscreenvalue('4')">4</button>
+        <button class="btn num" onclick="setscreenvalue('5')">5</button>
+        <button class="btn num" onclick="setscreenvalue('6')">6</button>
+        <button class="btn op" onclick="setscreenvalue('*')">*</button>
+
+        <!--row 3-->
+        <button class="btn num" onclick="setscreenvalue('7')">7</button>
+        <button class="btn num" onclick="setscreenvalue('8')">8</button>
+        <button class="btn num" onclick="setscreenvalue('9')">9</button>
+        <button class="btn op" onclick="setscreenvalue('/')">/</button>
+
+        <!--row 4-->
+        <button class="btn num" onclick="setscreenvalue('%')">%</button>
+        <button class="btn num" onclick="setscreenvalue('0')">0</button>
+        <button class="btn num" onclick="setscreenvalue('.')">.</button>
+        <button class="btn op" onclick="calculate_result()">=</button>
+    </div>
+
+</body>
+
+<script>
+    //calculates and displays the result
+    function calculate_result(){
+      const expression = document.getElementById('result').value;
+      
+
+      //check for empty input
+      if(expression==''){
+        resultElement.value = 'enter an expression';
+        return;
+      }
+
+      //EVALUTE THE EXPRESSION AND HANDLE ERRORS    
+      try{
+        resultelement.value = eval(expression);
+        }catch(error){
+            resultElement.value = 'invalid expression';
+      }
+    }
+</script>
+</html>
